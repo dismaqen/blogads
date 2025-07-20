@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto Klik Vast Ad</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <!-- Inject script iklan -->
+  <script>
+    (function(xxwh){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.scripts[d.scripts.length - 1];
+      s.settings = xxwh || {};
+      s.src = "//smoggy-construction.com/bjXHV.sVdrGmlj0mYAW/cy/GevmZ9Ru_ZPUhljksPuTyY/1XM/TxggwgMKTPg-tLNyjpU/xwOTD/AwxQO/Qc";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+    })({});
+  </script>
+
+  <!-- Observer untuk tunggu elemen muncul lalu auto klik -->
+  <script>
+    const observer = new MutationObserver(() => {
+      const adLink = document.querySelector('a.vast-blocker[href]');
+      if (adLink) {
+        observer.disconnect(); // stop ngamatin
+        setTimeout(() => {
+          const event = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+          });
+          adLink.dispatchEvent(event);
+        }, 1500); // kasih delay sedikit biar smooth
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  </script>
+</body>
+</html>
