@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Klik Vast Ad</title>
+  <title>Auto Klik Vast Ad</title>
   <style>
     html, body {
       margin: 0;
@@ -27,15 +27,15 @@
     })({})
   </script>
 
-  <!-- Observer untuk tunggu elemen muncul lalu auto klik di tab baru -->
+  <!-- Observer untuk tunggu elemen muncul lalu auto klik di tab yang sama -->
   <script>
     const observer = new MutationObserver(() => {
       const adLink = document.querySelector('a.vast-blocker[href]');
       if (adLink) {
         observer.disconnect(); // stop ngamatin
         setTimeout(() => {
-          window.open(adLink.href, '_blank'); // buka di tab baru
-        }, 1500); // delay biar smooth
+          window.location.href = adLink.href; // buka langsung di tab yang sama
+        }, 13000); // delay 13 detik
       }
     });
 
