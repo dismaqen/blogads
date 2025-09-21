@@ -2,47 +2,35 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Klik Vast Ad</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <title>Auto Redirect</title>
+  <script>
+    // config UID, WID, dan target
+    var uid = "488637";
+    var wid = "741404";
+    var target = "https://spontaneous-nougat-ce3c2b.netlify.app/";
+
+    // fungsi helper: encode jadi base64
+    function utf8ToBase64(str) {
+      return btoa(unescape(encodeURIComponent(str)));
     }
-  </style>
+
+    // generate link redirect sesuai format p.pcdelv.com
+    function generateRedirect(uid, wid, targetUrl) {
+      var encoded = encodeURIComponent(targetUrl);      // URL-encode
+      var b64 = utf8ToBase64(encoded);                  // Base64
+      var cb = Date.now().toString();                   // cache buster
+      return "http://p.pcdelv.com/go/" + uid + "/" + wid + "/" + b64 + "?cb=" + cb;
+    }
+
+    // saat halaman dimuat, langsung redirect
+    window.onload = function() {
+      var redirectUrl = generateRedirect(uid, wid, target);
+      window.location.href = redirectUrl;
+    };
+  </script>
 </head>
 <body>
-  <!-- Inject script iklan -->
-  <script>
-    (function(vbe){
-      var d = document,
-          s = d.createElement('script'),
-          l = d.scripts[d.scripts.length - 1];
-      s.settings = vbe || {};
-      s.src = "\/\/fondstudy.com\/byX.VcsndGGGlP0CYlWYcr\/recmG9fujZlUWl\/kAP_TUY\/2YN\/TyI\/w\/MCj\/Axt\/NOjJYQ1dMYjoA\/y\/MkQh";
-      s.async = true;
-      s.referrerPolicy = 'no-referrer-when-downgrade';
-      l.parentNode.insertBefore(s, l);
-    })({})
-  </script>
-
-  <!-- Observer untuk tunggu elemen muncul lalu auto klik di tab yang sama -->
-  <script>
-    const observer = new MutationObserver(() => {
-      const adLink = document.querySelector('a.vast-blocker[href]');
-      if (adLink) {
-        observer.disconnect(); // stop ngamatin
-        setTimeout(() => {
-          window.location.href = adLink.href; // buka langsung di tab yang sama
-        }, 3000); // delay 3 detik
-      }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-  </script>
+  <p>Sedang mengalihkan...</p>
 </body>
 </html>
