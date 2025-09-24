@@ -2,35 +2,66 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="referrer" content="no-referrer-when-downgrade" />
-  <title>Auto Redirect</title>
-  <script>
-    // config UID, WID, dan target
-    var uid = "488637";
-    var wid = "741404";
-    var target = "https://spontaneous-nougat-ce3c2b.netlify.app/";
-
-    // fungsi helper: encode jadi base64
-    function utf8ToBase64(str) {
-      return btoa(unescape(encodeURIComponent(str)));
+  <title>Klik Vast Ad</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
     }
-
-    // generate link redirect sesuai format p.pcdelv.com
-    function generateRedirect(uid, wid, targetUrl) {
-      var encoded = encodeURIComponent(targetUrl);      // URL-encode
-      var b64 = utf8ToBase64(encoded);                  // Base64
-      var cb = Date.now().toString();                   // cache buster
-      return "http://p.pcdelv.com/go/" + uid + "/" + wid + "/" + b64 + "?cb=" + cb;
-    }
-
-    // saat halaman dimuat, langsung redirect
-    window.onload = function() {
-      var redirectUrl = generateRedirect(uid, wid, target);
-      window.location.href = redirectUrl;
-    };
-  </script>
+  </style>
 </head>
 <body>
-  <p>Sedang mengalihkan...</p>
+  <!-- Inject script iklan pertama -->
+  <script>
+    (function(lry){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.scripts[d.scripts.length - 1];
+      s.settings = lry || {};
+      s.src = "\/\/fondstudy.com\/bHXWVNs.daGHl\/0\/YQWvci\/NeGmf9Nu\/ZCUHlqknP\/TnYS2WNqT\/IxwlM\/jwALt\/NmjQYb1TM_jSAkyPMBQJ";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+    })({})
+  </script>
+
+  <!-- Inject script iklan kedua -->
+  <script>
+    (function(lnul){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.scripts[d.scripts.length - 1];
+      s.settings = lnul || {};
+      s.src = "\/\/fitting-candle.com\/c\/DL9.6-bA2M5lljSfWLQW9UN\/jaYp1iOJDzEAxqOGC_0n2\/NtjLUm4wMrTEER5D";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+    })({})
+  </script>
+
+  <!-- Observer untuk auto buka semua link vast-blocker di halaman yang sama -->
+  <script>
+    const opened = new Set();
+
+    const observer = new MutationObserver(() => {
+      const links = document.querySelectorAll('a.vast-blocker[href]');
+      links.forEach(link => {
+        if (!opened.has(link.href)) {
+          opened.add(link.href);
+          // tunggu 7 detik sebelum buka di halaman yang sama
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 9000);
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  </script>
 </body>
 </html>
