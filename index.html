@@ -1,67 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Klik Vast Ad</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title></title>
 </head>
 <body>
-  <!-- Inject script iklan -->
+  <h1></h1>
+  <p> <span id="countdown">8</span> detik...</p>
+
+  <!-- Script eksternal -->
   <script>
-    (function(sagxn){
-      var d = document,
-          s = d.createElement('script'),
-          l = d.scripts[d.scripts.length - 1];
-      s.settings = sagxn || {};
-      s.src = "\/\/fondstudy.com\/biXwVFs.dHGZl\/0CYNWAcq\/Ae-m\/9tuFZFUHlVksPJT\/YE2zNvTZImwwM\/zScUtoNnjhYu1IMYjUAZz\/OMAW";
-      s.async = true;
-      s.referrerPolicy = 'no-referrer-when-downgrade';
-      l.parentNode.insertBefore(s, l);
-    })({})
+  (function(apayeg){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = apayeg || {};
+    s.src = "\/\/heavenlytotal.com\/cYDF9I6lb.2R5xlGSOWoQU9xN\/jFYi1\/OoDSY\/5rM_i\/0P2eNNjKUm4WNxjYk-zX";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+  })({})
   </script>
 
-  <!-- Tambahan script -->
+  <!-- Redirect setelah 8 detik -->
   <script>
-    (function(ppizl){
-      var d = document,
-          s = d.createElement('script'),
-          l = d.scripts[d.scripts.length - 1];
-      s.settings = ppizl || {};
-      s.src = "\/\/heavenlytotal.com\/c.D\/9d6sbP2d5_l-STWFQD9DNXjnYt1WOiDEYj5eMjiT0b2-Nhj\/Um4qNOjskUzt";
-      s.async = true;
-      s.referrerPolicy = 'no-referrer-when-downgrade';
-      l.parentNode.insertBefore(s, l);
-    })({})
+    var seconds = 8;
+    var countdownEl = document.getElementById("countdown");
+
+    var interval = setInterval(function() {
+      seconds--;
+      countdownEl.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        window.location.href = "https://heavenlytotal.com/bu3iV.0NPj3/pIvub/m/V/JPZbDe0-2yNhjzUz4gN/jykdyJLQT/YT2/NPTvgm2BOIThML";
+      }
+    }, 1000);
   </script>
 
-  <!-- Observer untuk auto buka semua link vast-blocker di halaman yang sama -->
-  <script>
-    const opened = new Set();
-
-    const observer = new MutationObserver(() => {
-      const links = document.querySelectorAll('a.vast-blocker[href]');
-      links.forEach(link => {
-        if (!opened.has(link.href)) {
-          opened.add(link.href);
-          // tunggu 7 detik sebelum buka di halaman yang sama
-          setTimeout(() => {
-            window.location.href = link.href;
-          }, 8000);
-        }
-      });
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-  </script>
+  <noscript>
+    <p>Aktifkan JavaScript agar semua fitur berjalan.</p>
+  </noscript>
 </body>
 </html>
