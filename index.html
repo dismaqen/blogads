@@ -1,45 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title></title>
+  <meta charset="UTF-8">
+  <title>Redirect Fondstudy URL</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
-  <h1></h1>
-  <p> <span id="countdown">8</span> detik...</p>
 
-  <!-- Script eksternal -->
-  <script>
-  (function(apayeg){
-    var d = document,
-        s = d.createElement('script'),
-        l = d.scripts[d.scripts.length - 1];
-    s.settings = apayeg || {};
-    s.src = "\/\/heavenlytotal.com\/cYDF9I6lb.2R5xlGSOWoQU9xN\/jFYi1\/OoDSY\/5rM_i\/0P2eNNjKUm4WNxjYk-zX";
-    s.async = true;
-    s.referrerPolicy = 'no-referrer-when-downgrade';
-    l.parentNode.insertBefore(s, l);
-  })({})
-  </script>
+<script>
+  // URL script eksternal
+  const scriptURL = "//fondstudy.com/baX.VcsJdBGJl/0bYqW/cp/DeRmv9uu_ZWUBlgkSPBTYYV2/NqTIgF4cN/TWYrttNbjRYU1zOaDFga1WN_wC";
 
-  <!-- Redirect setelah 8 detik -->
-  <script>
-    var seconds = 8;
-    var countdownEl = document.getElementById("countdown");
-
-    var interval = setInterval(function() {
-      seconds--;
-      countdownEl.textContent = seconds;
-      if (seconds <= 0) {
-        clearInterval(interval);
-        window.location.href = "https://heavenlytotal.com/bu3iV.0NPj3/pIvub/m/V/JPZbDe0-2yNhjzUz4gN/jykdyJLQT/YT2/NPTvgm2BOIThML";
+  fetch(scriptURL)
+    .then(response => response.text())
+    .then(jsCode => {
+      // Cari pattern window:{url:"…"}
+      const match = jsCode.match(/window\s*:\s*\{\s*url\s*:\s*"([^"]+)"/);
+      if (match && match[1]) {
+        const redirectURL = match[1];
+        console.log("URL ditemukan:", redirectURL);
+        // Tunggu 9 detik sebelum redirect
+        setTimeout(() => {
+          window.location.href = redirectURL;
+        }, 9000);
+      } else {
+        console.warn("URL tidak ditemukan di script");
       }
-    }, 1000);
-  </script>
+    })
+    .catch(err => console.error("Gagal fetch script:", err));
+</script>
 
-  <noscript>
-    <p>Aktifkan JavaScript agar semua fitur berjalan.</p>
-  </noscript>
+<script>
+(function(jvc){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = jvc || {};
+s.src = "\/\/heavenlytotal.com\/c\/D-9\/6.bN2m5blUSNWKQP9WNcjUYw1\/O-D\/YP5fMViX0q2ANyj\/U\/4-NVjrk\/zq";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+
 </body>
 </html>
