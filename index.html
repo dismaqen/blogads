@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Redirect Fondstudy URL</title>
+  <title></title>
   <style>
     html, body {
       margin: 0;
@@ -13,42 +13,41 @@
   </style>
 </head>
 <body>
+  <!-- Inject script iklan -->
+  <script>
+    (function(inu){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.scripts[d.scripts.length - 1];
+      s.settings = inu || {};
+      s.src = "\/\/spitefuldecision.com\/bzX.VYsmd\/Gpli0WYBWUcg\/be_mV9Xu\/Z\/U\/lBkhPuTJYI2DN\/jaA\/wzNAzUgntFNqjEYF2-MXDUAN3nOdQ_";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+    })({})
+  </script>
 
-<script>
-  // URL script eksternal
-  const scriptURL = "//fondstudy.com/baX.VcsJdBGJl/0bYqW/cp/DeRmv9uu_ZWUBlgkSPBTYYV2/NqTIgF4cN/TWYrttNbjRYU1zOaDFga1WN_wC";
+  <!-- Observer untuk auto buka semua link vast-blocker di halaman yang sama -->
+  <script>
+    const opened = new Set();
 
-  fetch(scriptURL)
-    .then(response => response.text())
-    .then(jsCode => {
-      // Cari pattern window:{url:"…"}
-      const match = jsCode.match(/window\s*:\s*\{\s*url\s*:\s*"([^"]+)"/);
-      if (match && match[1]) {
-        const redirectURL = match[1];
-        console.log("URL ditemukan:", redirectURL);
-        // Tunggu 9 detik sebelum redirect
-        setTimeout(() => {
-          window.location.href = redirectURL;
-        }, 9000);
-      } else {
-        console.warn("URL tidak ditemukan di script");
-      }
-    })
-    .catch(err => console.error("Gagal fetch script:", err));
-</script>
+    const observer = new MutationObserver(() => {
+      const links = document.querySelectorAll('a.vast-blocker[href]');
+      links.forEach(link => {
+        if (!opened.has(link.href)) {
+          opened.add(link.href);
+          // tunggu 7 detik sebelum buka di halaman yang sama
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 5000);
+        }
+      });
+    });
 
-<script>
-(function(jvc){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = jvc || {};
-s.src = "\/\/heavenlytotal.com\/c\/D-9\/6.bN2m5blUSNWKQP9WNcjUYw1\/O-D\/YP5fMViX0q2ANyj\/U\/4-NVjrk\/zq";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-</script>
-
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  </script>
 </body>
 </html>
